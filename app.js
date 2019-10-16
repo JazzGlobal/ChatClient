@@ -14,7 +14,7 @@ socket.on('error', (err) => {
     console.error(`UDR error: ${err.stack}`);
 });
 
-socket.on('message', (msg, rinfo) => {
+socket.on('message', (msg) => {
     parsedMsg = JSON.parse(msg.toString());
     console.log(parsedMsg);
     console.log('Received UDP Message');
