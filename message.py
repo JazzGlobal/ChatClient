@@ -1,3 +1,5 @@
+# PROTOTYPE MESSAGE PACKET OBJECT
+
 from datetime import datetime
 class Message:
     def __init__(self, message, author):
