@@ -3,10 +3,13 @@
 import socket, json, sys
 import message
 
-message = message.Message(sys.argv[1], sys.argv[2])
-to_send = json.dumps(message.export()).encode('utf-8')
+message_dict = message.Message(sys.argv[1], sys.argv[2]).export()
+message_dict['sender_host_name'] = socket.gethostname()
+message_dict['sender_ip_address'] = socket.gethostbyname(message_dict['sender_host_name'])
 
-UDP_IP = "127.0.0.1"
+to_send = json.dumps(message_dict).encode('utf-8')
+
+UDP_IP = "192.168.0.194"
 UDP_PORT = 5005
 
 sock = socket.socket(socket.AF_INET, # Internet
